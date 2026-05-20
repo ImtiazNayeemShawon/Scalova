@@ -259,15 +259,15 @@ export const Hero = () => {
       <div className="aurora" aria-hidden></div>
       <div className="container">
         <div className="col gap-6" style={{ alignItems: 'flex-start', maxWidth: 1100 }}>
-          <Reveal className="row center gap-2" style={{ display: 'inline-flex' }}>
-            {/* <span className="chip">
+          {/* <Reveal className="row center gap-2" style={{ display: 'inline-flex' }}>
+            <span className="chip">
               <span className="dot pulse"></span>
               <span>Now in private preview · 14 design partners</span>
-            </span> */}
-            {/* <span className="chip" style={{ color: 'var(--text-3)' }}>
+            </span>
+            <span className="chip" style={{ color: 'var(--text-3)' }}>
               Series A · led by Founders Fund
-            </span> */}
-          </Reveal>
+            </span>
+          </Reveal> */}
 
           <Reveal delay={80}>
             <h1 className="display">
