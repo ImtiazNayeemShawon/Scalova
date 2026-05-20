@@ -106,71 +106,48 @@ export const Comparison = () => {
           sub="Most teams hit a wall the same way: copilots are great for the next sentence, useless for next week. Your work doesn't shrink to a chat window."
         />
 
-        <Reveal className="card-glass" style={{ overflow: 'hidden' }}>
-          <div className="row" style={{ borderBottom: '1px solid var(--line)' }}>
-            <div style={{ flex: '0 0 200px', padding: '20px 22px' }} className="mono tiny">
-              VECTOR
-            </div>
-            <div style={{ flex: 1, padding: '20px 22px', borderLeft: '1px solid var(--line)' }}>
+        <Reveal className="card-glass comparison-table" style={{ overflow: 'hidden' }}>
+          <div className="comparison-head row">
+            <div className="comparison-axis-head mono tiny">VECTOR</div>
+            <div className="comparison-cell-head">
               <div className="row center gap-2">
                 <SectionIcon name="command" size={14} style={{ color: 'var(--text-3)' }} />
-                <span style={{ fontSize: 14, color: 'var(--text-3)' }}>Copilot · reactive</span>
+                <span>Copilot · reactive</span>
               </div>
             </div>
-            <div
-              style={{
-                flex: 1,
-                padding: '20px 22px',
-                borderLeft: '1px solid var(--line)',
-                background: 'linear-gradient(180deg, var(--accent-bg), transparent)',
-              }}
-            >
+            <div className="comparison-cell-head comparison-cell-head--twin">
               <div className="row center gap-2">
                 <SectionIcon name="fingerprint" size={14} className="accent" />
-                <span style={{ fontSize: 14, color: 'var(--text)' }}>Scalova twin · autonomous</span>
+                <span>Scalova twin · autonomous</span>
               </div>
             </div>
           </div>
 
           {rows.map((r, i) => (
-            <div
-              key={i}
-              className="row"
-              style={{ borderBottom: i < rows.length - 1 ? '1px solid var(--line)' : 'none' }}
-            >
-              <div style={{ flex: '0 0 200px', padding: '18px 22px' }} className="mono tiny">
-                <span style={{ color: 'var(--text-4)' }}>0{i + 1}</span>
-                <span style={{ marginLeft: 12, color: 'var(--text-2)' }}>{r.axis.toUpperCase()}</span>
+            <div key={i} className="comparison-row">
+              <div className="comparison-axis mono tiny">
+                <span className="comparison-num">0{i + 1}</span>
+                <span className="comparison-label">{r.axis.toUpperCase()}</span>
               </div>
-              <div
-                style={{
-                  flex: 1,
-                  padding: '18px 22px',
-                  borderLeft: '1px solid var(--line)',
-                  color: 'var(--text-3)',
-                  fontSize: 15,
-                }}
-              >
-                <SectionIcon name="x" size={12} style={{ color: 'var(--text-4)', marginRight: 8, verticalAlign: '-1px' }} />
-                {r.copilot}
+              <div className="comparison-cell comparison-cell--copilot">
+                <span className="comparison-mobile-label mono tiny">Copilot</span>
+                <span>
+                  <SectionIcon name="x" size={12} style={{ color: 'var(--text-4)', marginRight: 8, verticalAlign: '-1px' }} />
+                  {r.copilot}
+                </span>
               </div>
-              <div
-                style={{
-                  flex: 1,
-                  padding: '18px 22px',
-                  borderLeft: '1px solid var(--line)',
-                  color: 'var(--text)',
-                  fontSize: 15,
-                }}
-              >
-                <SectionIcon name="check" size={12} className="accent" style={{ marginRight: 8, verticalAlign: '-1px' }} />
-                {r.twin}
+              <div className="comparison-cell comparison-cell--twin">
+                <span className="comparison-mobile-label mono tiny">Scalova twin</span>
+                <span>
+                  <SectionIcon name="check" size={12} className="accent" style={{ marginRight: 8, verticalAlign: '-1px' }} />
+                  {r.twin}
+                </span>
               </div>
             </div>
           ))}
         </Reveal>
 
-        <Reveal delay={120} className="row between wrap" style={{ marginTop: 28, gap: 16 }}>
+        <Reveal delay={120} className="comparison-footer row between wrap">
           <p className="small" style={{ maxWidth: 560 }}>
             The shift is structural. When work is owned by an autonomous agent with persistent context,
             the team's capacity stops being indexed to attention.
@@ -926,9 +903,9 @@ export const Vision = () => {
             "In 5 years, every knowledge worker will have an AI twin. The bottleneck won't be capability — it will be trust,
             governance, and the ability to integrate with enterprise workflows. Scalova is building that layer."
           </p>
-          <span className="mono tiny" style={{ color: 'var(--text-4)', textAlign: 'center' }}>
+          {/* <span className="mono tiny" style={{ color: 'var(--text-4)', textAlign: 'center' }}>
             — Founders Fund thesis
-          </span>
+          </span> */}
         </Reveal>
       </div>
     </section>

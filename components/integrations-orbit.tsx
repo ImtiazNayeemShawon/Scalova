@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import {
   Airtable,
@@ -34,7 +35,6 @@ type OrbitRing = {
   icons: OrbitItem[];
 };
 
-/** Radii & ring diameters are in px — ring diameter always equals radius × 2 */
 const ORBIT_RINGS: OrbitRing[] = [
   {
     id: 'inner',
@@ -90,6 +90,26 @@ const ORBIT_RINGS: OrbitRing[] = [
   },
 ];
 
+function useOrbitScale() {
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      if (w < 380) setScale(0.48);
+      else if (w < 480) setScale(0.55);
+      else if (w < 640) setScale(0.65);
+      else if (w < 900) setScale(0.82);
+      else setScale(1);
+    };
+    update();
+    window.addEventListener('resize', update, { passive: true });
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  return scale;
+}
+
 const OrbitIcon = ({
   name,
   Icon,
@@ -116,13 +136,18 @@ const OrbitIcon = ({
 );
 
 export const IntegrationsOrbit = () => {
+  const scale = useOrbitScale();
+
   return (
     <div className="integrations-stage">
       <div className="integrations-stage-bg" aria-hidden />
 
       {ORBIT_RINGS.map((ring) => {
         const count = ring.icons.length;
-        const ringDiameter = ring.radius * 2;
+        const radius = Math.round(ring.radius * scale);
+        const ringDiameter = radius * 2;
+        const iconSize = Math.round(ring.iconSize * scale);
+        const badgeSize = Math.round(ring.badgeSize * scale);
 
         return (
           <div
@@ -144,9 +169,9 @@ export const IntegrationsOrbit = () => {
                   key={item.name}
                   {...item}
                   angle={ring.phaseOffset + (360 / count) * i}
-                  radius={ring.radius}
-                  iconSize={ring.iconSize}
-                  badgeSize={ring.badgeSize}
+                  radius={radius}
+                  iconSize={iconSize}
+                  badgeSize={badgeSize}
                 />
               ))}
             </div>

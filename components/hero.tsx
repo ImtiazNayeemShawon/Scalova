@@ -47,16 +47,16 @@ const HeroOrchestration = () => {
   ];
 
   return (
-    <div className="hero-orch card-glass" style={{ position: 'relative', overflow: 'hidden' }}>
-      <div className="row between center" style={{ padding: '14px 18px', borderBottom: '1px solid var(--line)' }}>
-        <div className="row center gap-3">
+    <div className="hero-orch card-glass">
+      <div className="hero-orch-header row between center">
+        <div className="hero-orch-title row center gap-3">
           <span className="mono tiny" style={{ color: 'var(--text-3)' }}>
             scalova.os
           </span>
-          <span style={{ width: 1, height: 12, background: 'var(--line-2)' }}></span>
-          <span className="mono tiny">orchestrator / overnight-run #2841</span>
+          <span className="hero-orch-divider" aria-hidden />
+          <span className="mono tiny hero-orch-run-id">orchestrator / overnight-run #2841</span>
         </div>
-        <div className="row center gap-3">
+        <div className="hero-orch-meta row center gap-3">
           <span className="chip">
             <span className="dot pulse"></span>
             <span>5 twins active</span>
@@ -68,31 +68,23 @@ const HeroOrchestration = () => {
         </div>
       </div>
 
-      <div style={{ padding: '16px 18px 6px' }}>
-        <div className="row" style={{ gap: 12, color: 'var(--text-4)' }}>
-          <div className="mono tiny" style={{ width: 200 }}>
-            EMPLOYEE
-          </div>
-          <div className="mono tiny" style={{ width: 80 }}>
-            STATE
-          </div>
-          <div className="mono tiny" style={{ flex: 1 }}>
-            CURRENT DELIVERABLE
-          </div>
-          <div className="mono tiny" style={{ width: 110, textAlign: 'right' }}>
-            PROGRESS
-          </div>
+      <div className="hero-orch-cols-wrap">
+        <div className="hero-orch-cols row">
+          <div className="mono tiny hero-orch-col-employee">EMPLOYEE</div>
+          <div className="mono tiny hero-orch-col-state">STATE</div>
+          <div className="mono tiny hero-orch-col-task">CURRENT DELIVERABLE</div>
+          <div className="mono tiny hero-orch-col-progress">PROGRESS</div>
         </div>
       </div>
 
-      <div className="col" style={{ padding: '0 18px 14px', gap: 6 }}>
+      <div className="hero-orch-lanes col">
         {lanes.map((l, i) => (
           <HeroLane key={i} lane={l} idx={i} tick={tick} animationDelay={i * 50} />
         ))}
       </div>
 
-      <div className="row between center" style={{ padding: '12px 18px', borderTop: '1px solid var(--line)', background: 'rgba(255,255,255,0.015)' }}>
-        <div className="row center gap-6 mono tiny">
+      <div className="hero-orch-footer row between center">
+        <div className="hero-orch-stats row center gap-6 mono tiny">
           <span>
             <span style={{ color: 'var(--text-3)' }}>queue</span>{' '}
             <span style={{ color: 'var(--text)' }}>13</span>
@@ -198,50 +190,43 @@ const HeroLane = ({
 
   return (
     <div
-      className="row center"
+      className="hero-lane row center"
       style={{
-        gap: 12,
-        padding: '10px 12px',
-        borderRadius: 10,
-        background: 'rgba(255,255,255,0.015)',
-        border: '1px solid var(--line)',
-        animation: 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
         animationDelay: `${animationDelay}ms`,
-        animationFillMode: 'backwards',
       }}
     >
-      <div className="row center gap-3" style={{ width: 200 }}>
+      <div className="hero-lane-employee row center gap-3">
         <Avatar name={lane.name} />
-        <div className="col" style={{ gap: 2 }}>
+        <div className="col" style={{ gap: 2, minWidth: 0 }}>
           <div style={{ fontSize: 13, color: 'var(--text)' }}>{lane.name.split(' · ')[0]}</div>
           <div className="mono tiny">{lane.name.split(' · ')[1]} twin</div>
         </div>
       </div>
 
-      <div style={{ width: 80 }}>
+      <div className="hero-lane-state">
         <span className="row center gap-2" style={{ fontSize: 12, color: stateMeta.color }}>
           <StatusDot tone={stateMeta.dot} pulse={lane.state === 'running'} />
           <span>{stateMeta.label}</span>
         </span>
       </div>
 
-      <div className="col" style={{ flex: 1, gap: 20 }}>
+      <div className="hero-lane-task col">
         <div className="row center gap-2" style={{ fontSize: 13 }}>
-          <Icon name={lane.asset as any} size={13} style={{ color: 'var(--text-3)' }} />
+          <Icon name={lane.asset as any} size={13} style={{ color: 'var(--text-3)', flexShrink: 0 }} />
           <span style={{ color: 'var(--text)' }}>{lane.task}</span>
         </div>
-        <div className="mono tiny">
+        <div className="mono tiny hero-lane-sub">
           {lane.state === 'queued' && 'awaiting → context build'}
           {lane.state === 'running' && 'agents · researcher · writer · reviewer'}
           {lane.state === 'review' && 'ready for morning review · diff +218 / −34'}
         </div>
       </div>
 
-      <div className="col" style={{ width: 110, alignItems: 'flex-end', gap: 4 }}>
+      <div className="hero-lane-progress col">
         <span className="mono tiny" style={{ color: stateMeta.color }}>
           {Math.round(prog * 100)}%
         </span>
-        <div style={{ width: 100, height: 3, background: 'rgba(255,255,255,0.06)', borderRadius: 2, overflow: 'hidden' }}>
+        <div className="hero-lane-bar">
           <div
             style={{
               width: `${prog * 100}%`,
@@ -263,7 +248,7 @@ export const Hero = () => {
       <div className="aurora" aria-hidden></div>
       <div className="container">
         <div className="col gap-6" style={{ alignItems: 'flex-start', maxWidth: 1100 }}>
-          <Reveal className="row center gap-2" style={{ display: 'inline-flex' }}>
+          {/* <Reveal className="hero-badges row center gap-2">
             <span className="chip">
               <span className="dot pulse"></span>
               <span>Now in private preview · 14 design partners</span>
@@ -271,7 +256,7 @@ export const Hero = () => {
             <span className="chip" style={{ color: 'var(--text-3)' }}>
               Series A · led by Founders Fund
             </span>
-          </Reveal>
+          </Reveal> */}
 
           <Reveal delay={80}>
             <h1 className="display">
@@ -288,12 +273,12 @@ export const Hero = () => {
             </p>
           </Reveal>
 
-          <Reveal delay={240} className="row gap-3 wrap" style={{ marginTop: 8 }}>
+          <Reveal delay={240} className="hero-cta row gap-3 wrap">
             <a
               href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-primary"
+              className="btn btn-primary hero-cta-primary"
             >
               Book a demo
               <Icon name="arrow-right" size={14} />
@@ -304,17 +289,13 @@ export const Hero = () => {
             </a> */}
           </Reveal>
 
-          <Reveal
-            delay={320}
-            className="row center gap-4 wrap"
-            style={{ marginTop: 28, color: 'var(--text-4)' }}
-          >
+          <Reveal delay={320} className="hero-trust row center gap-4 wrap">
             <span className="mono tiny">SOC 2 TYPE II</span>
-            <span className="mono tiny">·</span>
+            <span className="mono tiny hero-trust-sep">·</span>
             <span className="mono tiny">GDPR · HIPAA-READY</span>
-            <span className="mono tiny">·</span>
+            <span className="mono tiny hero-trust-sep">·</span>
             <span className="mono tiny">SELF-HOSTED OPTION</span>
-            <span className="mono tiny">·</span>
+            <span className="mono tiny hero-trust-sep">·</span>
             <span className="mono tiny">HUMAN APPROVAL GATES BY DEFAULT</span>
           </Reveal>
 

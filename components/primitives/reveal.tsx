@@ -53,7 +53,7 @@ export const SectionLabel = ({
   children?: React.ReactNode;
 }) => (
   <div
-    className="col gap-4"
+    className={`section-label col gap-4 ${align === 'center' ? 'section-label--center' : ''}`}
     style={{
       textAlign: align as any,
       alignItems: align === 'center' ? 'center' : 'flex-start',
