@@ -998,11 +998,16 @@ export const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <div className="row center gap-2">
-          <Logo variant="footer" />
-          <span className="mono tiny" style={{ color: 'var(--text-4)' }}>
-            © {new Date().getFullYear()} Scalova. All rights reserved.
-          </span>
+        <div>
+          <div className="row center gap-2">
+            <Logo variant="footer" />
+            <span className="mono tiny" style={{ color: 'var(--text-4)' }}>
+              © {new Date().getFullYear()} Scalova. All rights reserved.
+            </span>
+          </div>
+          <p className="mono tiny" style={{ color: 'var(--text-4)', marginTop: 6 }}>
+            Scalova is a product of Two Hands Corporation.
+          </p>
         </div>
         <a
           href={CALENDLY_URL}

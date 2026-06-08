@@ -5,6 +5,7 @@
     "": {
       "name": "scalova",
       "dependencies": {
+        "@dev.icons/react": "^1.1.0",
         "@tabler/icons-react": "^3.44.0",
         "@tailwindcss/postcss": "^4.3.0",
         "clsx": "^2.1.1",
@@ -28,6 +29,8 @@
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
+
+    "@dev.icons/react": ["@dev.icons/react@1.1.0", "", { "peerDependencies": { "react": ">= 16.8", "react-dom": ">= 16.8" } }, "sha512-N4JqK6zeyL7A9ChnU7pKdFm9Zj8lzGpQX7rqKM4iBbaADL3iaZygAvjgpSnYtkGYGceYosbIpecikcTgP/0pnw=="],
 
     "@jridgewell/gen-mapping": ["@jridgewell/gen-mapping@0.3.13", "", { "dependencies": { "@jridgewell/sourcemap-codec": "^1.5.0", "@jridgewell/trace-mapping": "^0.3.24" } }, "sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA=="],
 
