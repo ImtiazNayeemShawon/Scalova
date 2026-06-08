@@ -280,7 +280,7 @@ export const Hero = () => {
               rel="noopener noreferrer"
               className="btn btn-primary hero-cta-primary"
             >
-              Book a demo
+              Signup
               <Icon name="arrow-right" size={14} />
             </a>
             {/* <a className="btn btn-ghost">

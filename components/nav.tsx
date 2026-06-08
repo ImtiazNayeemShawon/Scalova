@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import NextLink from 'next/link';
 import { Link } from 'react-scroll';
 import { Logo } from './primitives/logo';
 import { SectionIcon } from './primitives/section-icon';
+import { APP_ROUTES } from '@/lib/app-routes';
 import { CALENDLY_URL } from '@/lib/site';
 
 const SCROLL_OFFSET = -80;
@@ -90,6 +92,14 @@ export const Nav = () => {
           ))}
         </div>
         <div className="row center gap-3 nav-actions">
+          <NextLink
+            href={APP_ROUTES.login}
+            className="btn btn-ghost"
+            style={{ padding: '8px 16px', fontSize: 13 }}
+            onClick={closeMenu}
+          >
+            Log in
+          </NextLink>
           <a
             href={CALENDLY_URL}
             target="_blank"
@@ -98,7 +108,7 @@ export const Nav = () => {
             style={{ padding: '8px 16px', fontSize: 13 }}
             onClick={closeMenu}
           >
-            Book demo
+            Signup
             <SectionIcon name="arrow-right" size={12} />
           </a>
         </div>

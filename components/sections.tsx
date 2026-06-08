@@ -419,7 +419,7 @@ export const MorningInbox = () => {
                   rel="noopener noreferrer"
                   className="btn btn-primary"
                 >
-                  Book a demo
+                  Signup
                   <SectionIcon name="arrow-right" size={12} />
                 </a>
                 <span className="btn btn-ghost demo-pill" aria-hidden>
@@ -929,7 +929,7 @@ export const FinalCTA = () => {
               rel="noopener noreferrer"
               className="btn btn-primary"
             >
-              Book a demo
+              Signup
               <SectionIcon name="arrow-right" size={14} />
             </a>
             <a
@@ -983,7 +983,7 @@ export const Footer = () => {
         <div className="footer-col">
           <h4>Get started</h4>
           <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="footer-link">
-            Book a demo
+            Signup
           </a>
           <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="footer-link">
             Private preview
@@ -1016,7 +1016,7 @@ export const Footer = () => {
           className="btn btn-ghost"
           style={{ fontSize: 12, padding: '6px 12px' }}
         >
-          Book demo
+          Signup
         </a>
       </div>
     </footer>

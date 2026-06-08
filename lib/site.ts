@@ -1,5 +1,5 @@
 export const CALENDLY_URL =
-  'https://calendly.com/ujjwalroy1/hyperscaler-scale-your-build';
+  'https://leads.scalova.ai/';
 
 export const SITE = {
   name: 'Scalova',
