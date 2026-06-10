@@ -2,10 +2,16 @@
 export const OFAC_BLOCKED_COUNTRIES = new Set([
   'BY', // Belarus
   'CU', // Cuba
+  'IQ', // Iraq
   'IR', // Iran
   'KP', // North Korea
+  'LY', // Libya
+  'MM', // Myanmar
   'RU', // Russia
+  'SD', // Sudan
+  'SO', // Somalia
   'SY', // Syria
+  'VE', // Venezuela
 ]);
 
 export function isOfacBlockedCountry(country: string | null | undefined): boolean {
