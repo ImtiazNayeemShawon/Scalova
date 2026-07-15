@@ -93,7 +93,7 @@ export const Nav = () => {
         </div>
         <div className="row center gap-3 nav-actions">
           <NextLink
-            href={APP_ROUTES.login}
+            href={CALENDLY_URL}
             className="btn btn-ghost"
             style={{ padding: '8px 16px', fontSize: 13 }}
             onClick={closeMenu}
