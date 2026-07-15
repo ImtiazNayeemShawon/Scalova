@@ -5,7 +5,6 @@ import NextLink from 'next/link';
 import { Link } from 'react-scroll';
 import { Logo } from './primitives/logo';
 import { SectionIcon } from './primitives/section-icon';
-import { APP_ROUTES } from '@/lib/app-routes';
 import { CALENDLY_URL } from '@/lib/site';
 
 const SCROLL_OFFSET = -80;

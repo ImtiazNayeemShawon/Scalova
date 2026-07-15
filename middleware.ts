@@ -7,7 +7,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const country = getCountryFromRequest(request.headers) ?? request.geo?.country ?? null;
+  const country = getCountryFromRequest(request.headers) ?? (request as NextRequest & { geo?: { country?: string } }).geo?.country ?? null;
 
   if (isOfacBlockedCountry(country)) {
     return NextResponse.rewrite(new URL('/unavailable', request.url));
